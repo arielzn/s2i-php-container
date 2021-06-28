@@ -55,7 +55,6 @@ RUN yum -y module enable php:remi-$PHP_VERSION nodejs:$NODEJS_VERSION && \
                   php-pecl-redis5 php-phpiredis php-pecl-zip yarn" && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     yum install -y tzdata nodejs && \
-    dnf install --allowerasing -y https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/29/Everything/x86_64/os/Packages/z/zopfli-1.0.1-7.fc29.x86_64.rpm && \
     rpm -V $INSTALL_PKGS && \
     yum -y clean all --enablerepo='*'
 

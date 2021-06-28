@@ -5,6 +5,12 @@ set -e
 source ${PHP_CONTAINER_SCRIPTS_PATH}/common.sh
 
 shopt -s dotglob
+
+echo "---> Running pre-assemble step..."
+
+# pre-assemble files
+process_extending_files ./php-pre-assemble/ ${PHP_CONTAINER_SCRIPTS_PATH}/pre-assemble/
+
 echo "---> Installing application source..."
 rm -fR /tmp/src/.git
 mv /tmp/src/* ./
