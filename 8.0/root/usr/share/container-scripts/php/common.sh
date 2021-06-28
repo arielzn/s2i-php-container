@@ -150,3 +150,18 @@ process_ssl_certs() {
   fi
 }
 
+# We check if there are pre-assemble scripts on the cloned
+# source and run them on the container-setup step
+# This allows some customization to be run as root, like
+# pulling extra packages from repos
+function process_pre_assemble_files() {
+  local default_dir
+  default_dir=/tmp/src/php-pre-assemble
+
+  while read filename ; do
+    echo "=> sourcing $filename ..."
+    if [ -f $default_dir/$filename ]; then
+      source $default_dir/$filename
+    fi
+  done <<<"$(get_matched_files "$default_dir" '*.sh' | sort -u)"
+}

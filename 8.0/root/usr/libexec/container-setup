@@ -49,5 +49,6 @@ chmod -R a+rwx ${PHP_SYSCONF_PATH}
 
 mkdir -p ${PHP_CONTAINER_SCRIPTS_PATH}/pre-init
 
+process_pre_assemble_files
 config_general
 
